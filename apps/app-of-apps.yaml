@@ -9,7 +9,6 @@ spec:
   project: default
   destination:
     namespace: argocd
-    name: devops
   source:
     repoURL: git@github.com:Mohsen51/argocd-repo.git
     path: ./apps/
