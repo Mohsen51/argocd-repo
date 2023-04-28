@@ -32,5 +32,8 @@ spec:
         name: "in-cluster"
         namespace: "{{namespace}}"
       syncPolicy:
+        automated:
+          prune: false
+          selfHeal: true 
         syncOptions:
           - CreateNamespace=true
