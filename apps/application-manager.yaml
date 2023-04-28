@@ -4,16 +4,10 @@ metadata:
   name: application-manager
 spec:
   generators:
-    - matrix:
-        generators:
-          - clusters:
-              selector:
-                matchExpressions:
-                  - {}
-          - list:
-              elements:
-                - appName: cert-manager
-                  namespace: cert-manager
+  - list:
+      elements:
+        - appName: cert-manager
+          namespace: cert-manager
 
 
   template:
