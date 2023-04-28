@@ -9,6 +9,7 @@ spec:
   project: default
   destination:
     namespace: argocd
+    name: in-cluster
   source:
     repoURL: git@github.com:Mohsen51/argocd-repo.git
     path: ./apps/
