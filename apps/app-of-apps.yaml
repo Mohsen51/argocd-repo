@@ -11,7 +11,7 @@ spec:
     name: in-cluster
   source:
     repoURL: git@github.com:Mohsen51/argocd-repo.git
-    path: .
+    path: ./apps/
     directory:
       recurse: true
   syncPolicy:
