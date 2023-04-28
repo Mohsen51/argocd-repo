@@ -4,7 +4,6 @@ metadata:
   name: app-of-apps
   annotations:
     argocd.argoproj.io/manifest-generate-paths: .
-  finalizers: []
 spec:
   project: default
   destination:
