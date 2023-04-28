@@ -1,0 +1,38 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: application-manager
+spec:
+  generators:
+    # Generator for apps
+    # - matrix:
+    #     generators:
+    #       - list:
+    #           elements:
+
+
+  template:
+    metadata:
+      name: "{{appName}}"
+      annotations:
+        argocd.argoproj.io/manifest-generate-paths: "."
+      finalizers:
+        - resources-finalizer.argocd.argoproj.io
+    spec:
+      project: "default"
+      source:
+        repoURL: git@github.com:Mohsen51/argocd-repo.git
+        targetRevision: HEAD
+        path: "argocd-config/apps/{{appName}}"
+        helm:
+          # Release name override (defaults to application name)
+          releaseName: "{{appName}}"
+          valueFiles:
+            - ../common.values.yaml
+            - values.yaml
+      destination:
+        name: "in-cluster"
+        namespace: "{{namespace}}"
+      syncPolicy:
+        syncOptions:
+          - CreateNamespace=true
